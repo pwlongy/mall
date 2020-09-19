@@ -1,23 +1,42 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-19 17:54:27
+ * @LastEditTime: 2020-08-25 00:54:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vuemall\src\router\index.js
+ */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+
+const Home = () => import('../views/home/Home.vue')
+const Category = () => import('../views/category/Category.vue')
+const Cart = () => import('../views/cart/Cart.vue')
+const Profile = () => import('../views/profile/Profile.vue')
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '',
+    redirect: '/home'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/home',
+    component: Home
   },
+  {
+    path: '/profile',
+    component: Profile
+  },
+  {
+    path: '/shopcart',
+    component: Cart
+  },
+  {
+    path: '/category',
+    component: Category
+  }
 ];
 
 const router = new VueRouter({
